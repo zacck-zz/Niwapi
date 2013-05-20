@@ -29,6 +29,10 @@ public class LoginActivity extends Activity {
 
 		// Listening to register new account link
 		registerScreen.setOnClickListener(new View.OnClickListener() {
+			
+			
+			
+			
 
 			public void onClick(View v) {
 				// Switching to Register screen
