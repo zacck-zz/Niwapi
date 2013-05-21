@@ -1,8 +1,10 @@
 package com.semasoft.niwapi;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -133,6 +135,7 @@ public class RegisterActivity extends SherlockActivity implements
 		protected void onPostExecute(Void result) {
 
 			resp2 = resp;// ;EntityUtils.toString(response.getEntity());
+			Log.d("LOGGING", resp.toString());
 			JSONObject jsonResp = null;
 			JSONObject contestobj = null;
 			try {
@@ -163,9 +166,9 @@ public class RegisterActivity extends SherlockActivity implements
 						userobj.getString("user_mail"));
 				c = new Contest(contestobj.getInt("MAX(contest_id)"),
 						contestobj.getString("contest_media"),
-						new SimpleDateFormat("yyyy,mm,dd").parse(contestobj
+						convertStringToDate(contestobj
 								.getString("contest_date_loaded")),
-						new SimpleDateFormat("yyyy,mm,dd").parse(contestobj
+						convertStringToDate(contestobj
 								.getString("contest_date_solved")));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -179,6 +182,25 @@ public class RegisterActivity extends SherlockActivity implements
 
 			super.onPostExecute(result);
 		}
+	}
+	
+	public Date convertStringToDate(String date)
+	{
+		Date giveBack = null;
+		DateFormat df = new SimpleDateFormat("yyyy,MM,dd");
+		try
+		{
+			giveBack = df.parse(date);
+			String newDateString = df.format(giveBack);
+			Log.v("Logging", newDateString);
+			
+		}
+		catch(Exception e )
+		{
+			Log.v("ERROR", e.toString());
+		}
+		
+		return giveBack;
 	}
 
 	@Override
