@@ -2,10 +2,6 @@ package com.semasoft.niwapi;
 
 import java.util.List;
 
-import com.semasoft.niwapi.database.DaoSession;
-import com.semasoft.niwapi.database.UserDao;
-
-import de.greenrobot.dao.QueryBuilder;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,7 +11,6 @@ import android.widget.TextView;
 
 public class LoginActivity extends Activity {
 
-	DaoSession mSession;
 	NiwapiController nc;
 
 	@Override
@@ -40,19 +35,19 @@ public class LoginActivity extends Activity {
 	}
 
 	private void init() {
-		nc = (NiwapiController) getApplication();
-		mSession = nc.dSession;
-		UserDao ud = mSession.getUserDao();
-
-		QueryBuilder qb = ud.queryBuilder();
-
-		List users = qb.list();
-		if (users.isEmpty()) {
-
-		} else {
-			startActivity(new Intent(LoginActivity.this,
-					MainImageActivity.class));
-		}
+//		nc = (NiwapiController) getApplication();
+//		//mSession = nc.dSession;
+//		UserDao ud = mSession.getUserDao();
+//
+//		//QueryBuilder qb = ud.queryBuilder();
+//
+//		List users = qb.list();
+//		if (users.isEmpty()) {
+//
+//		} else {
+//			startActivity(new Intent(LoginActivity.this,
+//					MainImageActivity.class));
+//		}
 
 	}
 }
