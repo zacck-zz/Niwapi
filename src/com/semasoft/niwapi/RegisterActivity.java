@@ -114,6 +114,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 				HttpResponse response = httpclient.execute(httppost);
 				ServerResp = EntityUtils.toString(response.getEntity());
+				Log.d(TAG, response.getStatusLine().toString());
 
 			} catch (Exception e) {
 				Log.d(TAG, e.toString());
