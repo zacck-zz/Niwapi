@@ -1,6 +1,5 @@
 package com.semasoft.niwapi;
 
-import java.util.List;
 
 
 import android.app.Activity;
@@ -18,7 +17,6 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 
-		init();
 
 		TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
 
@@ -34,20 +32,5 @@ public class LoginActivity extends Activity {
 		});
 	}
 
-	private void init() {
-//		nc = (NiwapiController) getApplication();
-//		//mSession = nc.dSession;
-//		UserDao ud = mSession.getUserDao();
-//
-//		//QueryBuilder qb = ud.queryBuilder();
-//
-//		List users = qb.list();
-//		if (users.isEmpty()) {
-//
-//		} else {
-//			startActivity(new Intent(LoginActivity.this,
-//					MainImageActivity.class));
-//		}
-
-	}
+	
 }
