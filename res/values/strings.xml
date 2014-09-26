@@ -7,5 +7,12 @@
     <string name="admob_id">id_top</string>
     <string name="banner_top">top_banner</string>
     <string name="idloc">identifylocation</string>
+    <string name="post_try">Try!</string>
+    <string name="post_vote">Vote</string>
+    <string name="reg_text">New to Niwapi? Register here</string>
+    <string name="login_text">Login</string>
+    <string name="phone_no">Phone Number</string>
+    <string name="user_name">User Name</string>
+    <string name="conf_phone">Confirm Phone Number</string>
 
 </resources>

@@ -1475,14 +1475,16 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f080028;
         public static final int action_menu_presenter=0x7f080029;
         public static final int action_mode_close_button=0x7f080036;
-        public static final int action_settings=0x7f080059;
+        public static final int action_settings=0x7f08005b;
         public static final int activity_chooser_view_content=0x7f080037;
         public static final int adView=0x7f08004e;
         public static final int always=0x7f08001e;
         public static final int beginning=0x7f080023;
         public static final int book_now=0x7f080010;
+        public static final int btTry=0x7f080050;
+        public static final int btVote=0x7f080051;
         public static final int btnLogin=0x7f080052;
-        public static final int btnRegister=0x7f080057;
+        public static final int btnRegister=0x7f080059;
         public static final int buyButton=0x7f08000a;
         public static final int buy_now=0x7f08000f;
         public static final int buy_with_google=0x7f08000e;
@@ -1497,9 +1499,9 @@ containing a value of this type.
         public static final int end=0x7f080025;
         public static final int expand_activities_button=0x7f080038;
         public static final int expanded_menu=0x7f08003e;
-        public static final int footer=0x7f080051;
+        public static final int footer=0x7f080055;
         public static final int grayscale=0x7f080012;
-        public static final int header=0x7f080050;
+        public static final int header=0x7f080054;
         public static final int holo_dark=0x7f080005;
         public static final int holo_light=0x7f080006;
         public static final int home=0x7f080026;
@@ -1509,7 +1511,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f08001d;
         public static final int image=0x7f080039;
         public static final int imageView1=0x7f08004f;
-        public static final int link_to_login=0x7f080058;
+        public static final int link_to_login=0x7f08005a;
         public static final int link_to_register=0x7f080053;
         public static final int listMode=0x7f080014;
         public static final int list_item=0x7f08003b;
@@ -1523,9 +1525,9 @@ containing a value of this type.
         public static final int progress_circular=0x7f08002a;
         public static final int progress_horizontal=0x7f08002b;
         public static final int radio=0x7f080041;
-        public static final int reg_email=0x7f080055;
-        public static final int reg_fullname=0x7f080054;
-        public static final int reg_password=0x7f080056;
+        public static final int reg_conf_phone=0x7f080058;
+        public static final int reg_phone_no=0x7f080057;
+        public static final int reg_uname=0x7f080056;
         public static final int sandbox=0x7f080008;
         public static final int satellite=0x7f080002;
         public static final int search_badge=0x7f080044;
@@ -1751,8 +1753,15 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f070018;
+        public static final int conf_phone=0x7f070033;
         public static final int hello_world=0x7f070029;
         public static final int idloc=0x7f07002c;
+        public static final int login_text=0x7f070030;
+        public static final int phone_no=0x7f070031;
+        public static final int post_try=0x7f07002d;
+        public static final int post_vote=0x7f07002e;
+        public static final int reg_text=0x7f07002f;
+        public static final int user_name=0x7f070032;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */

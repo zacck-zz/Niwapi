@@ -1,28 +1,12 @@
 package com.semasoft.niwapi;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,11 +15,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class RegisterActivity extends Activity implements OnClickListener {
 
-	EditText ETName, ETEmail, ETPassword;
+	EditText ETName, ETPhone, ETConfP;
 	Button BtReg;
 	String name, mail, password;
 	NiwapiController nc;
@@ -63,11 +46,10 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 	private void init() {
 
-		ETEmail = (EditText) findViewById(R.id.reg_email);
-		ETName = (EditText) findViewById(R.id.reg_fullname);
-		ETPassword = (EditText) findViewById(R.id.reg_password);
+		ETPhone = (EditText) findViewById(R.id.reg_phone_no);
+		ETName = (EditText) findViewById(R.id.reg_uname);
+		ETConfP = (EditText) findViewById(R.id.reg_conf_phone);
 		nc = (NiwapiController) getApplication();
-		// mSession = nc.dSession;
 		BtReg = (Button) findViewById(R.id.btnRegister);
 		BtReg.setOnClickListener(this);
 
