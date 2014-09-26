@@ -1,115 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fillViewport="true" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dip" >
 
-    <RelativeLayout
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#fff" >
+        android:text="@string/user_name"
+        android:textColor="#372c24" />
 
-        <!-- Header  Starts -->
+    <EditText
+        android:id="@+id/reg_uname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:layout_marginTop="5dip"
+        android:singleLine="true" />
 
-        <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@layout/header_gradient"
-            android:paddingBottom="5dip"
-            android:paddingTop="5dip" >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_no"
+        android:textColor="#372c24" />
 
-            <!-- Logo Start -->
+    <EditText
+        android:id="@+id/reg_phone_no"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:layout_marginTop="5dip"
+        android:singleLine="true" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:src="@drawable/logo" />
-            <!-- Logo Ends -->
-        </LinearLayout>
-        <!-- Header Ends -->
-        <!-- Footer Start -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/conf_phone"
+        android:textColor="#372c24" />
 
-        <LinearLayout
-            android:id="@+id/footer"
-            android:layout_width="fill_parent"
-            android:layout_height="90dip"
-            android:layout_alignParentBottom="true"
-            android:background="@layout/footer_repeat"
-            android:orientation="horizontal" >
-        </LinearLayout>
+    <EditText
+        android:id="@+id/reg_conf_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:password="true"
+        android:singleLine="true" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/header"
-            android:orientation="vertical"
-            android:padding="10dip" >
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Register New Account" />
 
-            <!-- Full Name Label -->
+    <TextView
+        android:id="@+id/link_to_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dip"
+        android:layout_marginTop="40dip"
+        android:gravity="center"
+        android:text="Already has account! Login here"
+        android:textColor="#025f7c"
+        android:textSize="20dip" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_name"
-                android:textColor="#372c24" />
-
-            <EditText
-                android:id="@+id/reg_uname"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
-                android:singleLine="true" />
-            <!-- Email Label -->
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/phone_no"
-                android:textColor="#372c24" />
-
-            <EditText
-                android:id="@+id/reg_phone_no"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
-                android:singleLine="true" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/conf_phone"
-                android:textColor="#372c24" />
-
-            <EditText
-                android:id="@+id/reg_conf_phone"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:password="true"
-                android:singleLine="true" />
-
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="Register New Account" />
-
-            <TextView
-                android:id="@+id/link_to_login"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dip"
-                android:layout_marginTop="40dip"
-                android:gravity="center"
-                android:text="Already has account! Login here"
-                android:textColor="#025f7c"
-                android:textSize="20dip" />
-        </LinearLayout>
-    </RelativeLayout>
-
-</ScrollView>
+</LinearLayout>

@@ -1,9 +1,6 @@
 package com.semasoft.niwapi;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -39,20 +36,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_PROGRESS);
-		// Set View to register.xml
 		setContentView(R.layout.register);
-
 		TextView loginScreen = (TextView) findViewById(R.id.link_to_login);
 
-		// Listening to Login Screen link
-		loginScreen.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View arg0) {
-				// Switching to Login Screen/closing register screen
-				finish();
-			}
-		});
-		// initialize the page elements
 		init();
 	}
 
@@ -67,26 +53,12 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 	}
 
-	public Date convertStringToDate(String date) {
-		Date giveBack = null;
-		DateFormat df = new SimpleDateFormat("yyyy,MM,dd");
-		try {
-			giveBack = df.parse(date);
-			String newDateString = df.format(giveBack);
-			Log.v("Logging", newDateString);
-
-		} catch (Exception e) {
-			Log.v("ERROR", e.toString());
-		}
-
-		return giveBack;
-	}
-
 	@Override
 	public void onClick(View v) {
 
 		switch (v.getId()) {
 		case R.id.btnRegister:
+			Log.d(TAG, "reg button pressed");
 			String un,
 			up,
 			ucp;
@@ -100,12 +72,11 @@ public class RegisterActivity extends Activity implements OnClickListener {
 						Toast.LENGTH_LONG).show();
 
 			} else {
-				if (up.equalsIgnoreCase(ucp)) 
-				{
-					String[] ps = new String[]{up, un};
-					registerUser  ru = new registerUser();
+				if (up.equalsIgnoreCase(ucp)) {
+					String[] ps = new String[] { up, un };
+					Log.d(TAG, up + un);
+					registerUser ru = new registerUser();
 					ru.execute(ps);
-						
 
 				} else {
 					Toast.makeText(
@@ -122,27 +93,25 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	}
 
 	class registerUser extends AsyncTask<String[], Void, Void> {
-		
+
 		String ServerResp = "";
 
 		@Override
 		protected Void doInBackground(String[]... params) {
+			Log.d(TAG, "Async initiated");
 			try {
 				String[] data = params[0];
-				// Create a new HttpClient and Post Header
 				HttpClient httpclient = new DefaultHttpClient();
 				HttpPost httppost = new HttpPost(
 						"http://www.appbase.co.ke/niwapi_rest/register_user.php");
 
-				// Add your data
-				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
-						2);
-				nameValuePairs.add(new BasicNameValuePair("user_name", data[0]));
+				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 				nameValuePairs
-						.add(new BasicNameValuePair("user_phone", data[1]));
+						.add(new BasicNameValuePair("user_name", data[1]));
+				nameValuePairs
+						.add(new BasicNameValuePair("user_phone", data[0]));
 				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-				// Execute HTTP Post Request
 				HttpResponse response = httpclient.execute(httppost);
 				ServerResp = EntityUtils.toString(response.getEntity());
 
@@ -152,7 +121,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 			return null;
 		}
-		
+
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
