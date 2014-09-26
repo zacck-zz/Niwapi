@@ -14,8 +14,6 @@ public class MainImageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_image);
 		
-		//setup the ad 
-		//ads:testDevices="9912BCBF8DF01A6CA86CAE5842F4F3D6" 
 	
 
 	}

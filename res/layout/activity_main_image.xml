@@ -25,7 +25,7 @@
         android:layout_height="fill_parent"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="a1516ced65afa46"
-        ads:loadAdOnCreate="true"
+        ads:loadAdOnCreate="false"
         />
 	
 </LinearLayout>
