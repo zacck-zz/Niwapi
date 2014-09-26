@@ -11,10 +11,16 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -126,7 +132,26 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
+			String uid = null;
 			Log.d(TAG, ServerResp);
+			// parse the json
+			try {
+				JSONObject gotArr = new JSONObject(ServerResp);
+				uid = gotArr.getString("user_id");
+				Log.d(TAG, uid);
+
+			} catch (Exception e) {
+				Log.d(TAG, e.toString());
+			}
+
+			// make shared prefs and store the id of the user
+			SharedPreferences RegPrefs = PreferenceManager
+					.getDefaultSharedPreferences(RegisterActivity.this);
+			Editor mEditor = RegPrefs.edit();
+			mEditor.putString("uid", uid);
+			mEditor.commit();
+			Log.d(TAG, uid+ " stored ");
+			startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 		}
 
 	}
