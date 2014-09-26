@@ -1477,7 +1477,7 @@ containing a value of this type.
         public static final int action_mode_close_button=0x7f080036;
         public static final int action_settings=0x7f080059;
         public static final int activity_chooser_view_content=0x7f080037;
-        public static final int adView=0x7f08004f;
+        public static final int adView=0x7f08004e;
         public static final int always=0x7f08001e;
         public static final int beginning=0x7f080023;
         public static final int book_now=0x7f080010;
@@ -1508,7 +1508,7 @@ containing a value of this type.
         public static final int icon=0x7f08003c;
         public static final int ifRoom=0x7f08001d;
         public static final int image=0x7f080039;
-        public static final int imageView1=0x7f08004e;
+        public static final int imageView1=0x7f08004f;
         public static final int link_to_login=0x7f080058;
         public static final int link_to_register=0x7f080053;
         public static final int listMode=0x7f080014;
@@ -1609,9 +1609,10 @@ containing a value of this type.
         public static final int activity_main_image=0x7f030018;
         public static final int footer_repeat=0x7f030019;
         public static final int header_gradient=0x7f03001a;
-        public static final int login=0x7f03001b;
-        public static final int register=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int im_list_item=0x7f03001b;
+        public static final int login=0x7f03001c;
+        public static final int register=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class menu {
         public static final int main_image=0x7f0c0000;

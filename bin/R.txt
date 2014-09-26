@@ -342,7 +342,7 @@ int id action_menu_presenter 0x7f080029
 int id action_mode_close_button 0x7f080036
 int id action_settings 0x7f080059
 int id activity_chooser_view_content 0x7f080037
-int id adView 0x7f08004f
+int id adView 0x7f08004e
 int id always 0x7f08001e
 int id beginning 0x7f080023
 int id book_now 0x7f080010
@@ -373,7 +373,7 @@ int id hybrid 0x7f080004
 int id icon 0x7f08003c
 int id ifRoom 0x7f08001d
 int id image 0x7f080039
-int id imageView1 0x7f08004e
+int id imageView1 0x7f08004f
 int id link_to_login 0x7f080058
 int id link_to_register 0x7f080053
 int id listMode 0x7f080014
@@ -448,9 +448,10 @@ int layout abc_simple_decor 0x7f030017
 int layout activity_main_image 0x7f030018
 int layout footer_repeat 0x7f030019
 int layout header_gradient 0x7f03001a
-int layout login 0x7f03001b
-int layout register 0x7f03001c
-int layout support_simple_spinner_dropdown_item 0x7f03001d
+int layout im_list_item 0x7f03001b
+int layout login 0x7f03001c
+int layout register 0x7f03001d
+int layout support_simple_spinner_dropdown_item 0x7f03001e
 int menu main_image 0x7f0c0000
 int string abc_action_bar_home_description 0x7f07001b
 int string abc_action_bar_up_description 0x7f07001c
