@@ -2,9 +2,17 @@ package com.semasoft.niwapi;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -24,7 +32,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	String name, mail, password;
 	NiwapiController nc;
 	String TAG = "REGISTERACTIVITY";
-	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,8 +65,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 	}
 
-	
-
 	public Date convertStringToDate(String date) {
 		Date giveBack = null;
 		DateFormat df = new SimpleDateFormat("yyyy,MM,dd");
@@ -80,33 +85,42 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 		switch (v.getId()) {
 		case R.id.btnRegister:
-			
-			
+
 			break;
 
 		}
 
 	}
-	
-	class registerUser extends AsyncTask<String[], Void, Void>
-	{
+
+	class registerUser extends AsyncTask<String[], Void, Void> {
 
 		@Override
-		protected Void doInBackground(String[]... params) 
-		{
-			try
-			{
-				
+		protected Void doInBackground(String[]... params) {
+			try {
+				// call http methods
+				// Create a new HttpClient and Post Header
+				HttpClient httpclient = new DefaultHttpClient();
+				HttpPost httppost = new HttpPost(
+						"http://www.yoursite.com/script.php");
+
+				// Add your data
+				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
+						2);
+				nameValuePairs.add(new BasicNameValuePair("id", "12345"));
+				nameValuePairs.add(new BasicNameValuePair("stringdata",
+						"AndDev is Cool!"));
+				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+				// Execute HTTP Post Request
+				HttpResponse response = httpclient.execute(httppost);
+
+			} catch (Exception e) {
+				Log.d(TAG, e.toString());
 			}
-			catch(Exception e)
-			{
-				Log.DEBUG 
-			}
+
 			return null;
 		}
 
-		
-		
 	}
 
 }
