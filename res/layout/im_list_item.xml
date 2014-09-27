@@ -2,17 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="10" >
 
-    <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/ivContest"
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:contentDescription="@string/idloc"
-        android:layout_weight="2"
-        android:src="@drawable/excedy" />
+        android:layout_weight="2" >
 
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/ivContest"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:contentDescription="@string/idloc"
+            android:src="@drawable/excedy" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tvVotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/white" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,21 +42,22 @@
         android:layout_weight="8"
         android:gravity="bottom"
         android:orientation="horizontal" >
-        
 
-        <Button
+        <ImageButton
             android:id="@+id/btTry"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/post_try" />
+            android:background="@null"
+            android:src="@drawable/trybutton" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btVote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/post_vote" />
+            android:background="@null"
+            android:src="@drawable/votebutton" />
     </LinearLayout>
 
 </LinearLayout>

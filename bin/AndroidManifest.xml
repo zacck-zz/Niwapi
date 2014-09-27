@@ -35,6 +35,10 @@
             android:label="Register New Account" >
         </activity>
         <activity
+            android:name=".TryActivity"
+            android:label="Try!" >
+        </activity>
+        <activity
             android:name=".MainImageActivity"
             android:label="Contests" >
         </activity>
