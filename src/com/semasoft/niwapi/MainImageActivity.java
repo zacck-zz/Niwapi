@@ -1,5 +1,17 @@
 package com.semasoft.niwapi;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -7,6 +19,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
@@ -69,6 +82,33 @@ public class MainImageActivity extends Activity {
 		MainEdit.commit();
 		Log.d(TAG, "user Removed Redirecting to Login");
 		startActivity(new Intent(MainImageActivity.this, LoginActivity.class));
+
+	}
+
+	class pickContests extends AsyncTask<Void, Void, Void> {
+		String ServerResp;
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			Log.d(TAG, "Async initiated");
+			try {
+				HttpClient httpclient = new DefaultHttpClient();
+				HttpPost httppost = new HttpPost(
+						"collect_contests.php");
+
+				HttpResponse response = httpclient.execute(httppost);
+				ServerResp = EntityUtils.toString(response.getEntity());
+				Log.d(TAG, response.getStatusLine().toString());
+			} catch (Exception e) {
+				Log.d(TAG, e.toString());
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+		}
 
 	}
 

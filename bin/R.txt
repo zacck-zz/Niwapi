@@ -503,6 +503,7 @@ int string common_signin_button_text_long 0x7f070018
 int string conf_phone 0x7f070032
 int string hello_world 0x7f070029
 int string idloc 0x7f07002b
+int string image_pre 0x7f070036
 int string login_text 0x7f07002f
 int string phone_no 0x7f070030
 int string post_try 0x7f07002c

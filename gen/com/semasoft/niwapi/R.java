@@ -1759,6 +1759,7 @@ containing a value of this type.
         public static final int conf_phone=0x7f070032;
         public static final int hello_world=0x7f070029;
         public static final int idloc=0x7f07002b;
+        public static final int image_pre=0x7f070036;
         public static final int login_text=0x7f07002f;
         public static final int phone_no=0x7f070030;
         public static final int post_try=0x7f07002c;
