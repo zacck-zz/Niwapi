@@ -512,6 +512,9 @@ int string common_signin_button_text 0x7f070017
 int string common_signin_button_text_long 0x7f070018
 int string conf_phone 0x7f070032
 int string hello_world 0x7f070029
+int string hint_phone 0x7f070039
+int string hint_tru 0x7f070037
+int string hint_u_name 0x7f070038
 int string idloc 0x7f07002b
 int string image_pre 0x7f070036
 int string login_text 0x7f07002f

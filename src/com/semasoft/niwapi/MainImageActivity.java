@@ -19,6 +19,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.internal.ci;
 import com.google.android.gms.internal.li;
 
+import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -98,11 +99,11 @@ public class MainImageActivity extends Activity {
 		startActivity(new Intent(MainImageActivity.this, LoginActivity.class));
 
 	}
-
+	
 	class pickContests extends AsyncTask<Void, Void, Void> {
 		
 		String ServerResp;
-		String[] ctitle, cimage, cid;
+		String[] ctitle, cimage, cid,cvotes;
 		List<Contest> constestList = new ArrayList<Contest>();
 
 		@Override
@@ -122,6 +123,7 @@ public class MainImageActivity extends Activity {
 				ctitle = new String[parentArray.length()];
 				cimage = new String[parentArray.length()];
 				cid = new String[parentArray.length()];
+				cvotes = new String[parentArray.length()];
 
 				for (int now = 0; now < parentArray.length(); now++) {
 					JSONObject childObject = parentArray.getJSONObject(now)
@@ -129,6 +131,8 @@ public class MainImageActivity extends Activity {
 					ctitle[now] = childObject.getString("niwapi_contest_title");
 					cimage[now] = childObject.getString("niwapi_contest_image");
 					cid[now] = childObject.getString("niwapi_contest_id");
+					cvotes[now] = parentArray.getJSONObject(0).getString("votes");
+					
 				}
 				
 			} catch (Exception e) {
@@ -147,6 +151,7 @@ public class MainImageActivity extends Activity {
 					Cts.setID(cid[lilfuture]);
 					Cts.setTitle(ctitle[lilfuture]);
 					Cts.setImageLink(Imp+cimage[lilfuture]);
+					Cts.setVotes(Integer.valueOf(cvotes[lilfuture]));
 					constestList.add(Cts);
 			}
 			mAdapter = new ContestAdapter(MainImageActivity.this, constestList);

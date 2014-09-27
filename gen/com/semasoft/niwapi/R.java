@@ -1768,6 +1768,9 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f070018;
         public static final int conf_phone=0x7f070032;
         public static final int hello_world=0x7f070029;
+        public static final int hint_phone=0x7f070039;
+        public static final int hint_tru=0x7f070037;
+        public static final int hint_u_name=0x7f070038;
         public static final int idloc=0x7f07002b;
         public static final int image_pre=0x7f070036;
         public static final int login_text=0x7f07002f;

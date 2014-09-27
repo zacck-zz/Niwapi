@@ -98,7 +98,9 @@ public class TryActivity extends ListActivity implements OnClickListener {
 			super.onPostExecute(result);
 			Toast.makeText(TryActivity.this, "Congratulations " + ServerResp,
 					Toast.LENGTH_LONG).show();
+			etTrial.setText("");
 			new getContestTrials().execute();
+			
 
 		}
 

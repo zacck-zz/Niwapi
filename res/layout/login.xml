@@ -19,6 +19,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dip"
+        android:hint="@string/hint_u_name"
         android:layout_marginTop="5dip"
         android:singleLine="true" />
     <!-- Password Label -->
@@ -33,6 +34,7 @@
         android:id="@+id/ettuno"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/hint_phone"
         android:layout_marginTop="5dip"
         android:singleLine="true" />
     <!-- Login button -->
