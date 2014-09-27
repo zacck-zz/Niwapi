@@ -11,12 +11,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
 import com.google.android.gms.internal.lu;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -33,6 +35,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	NiwapiController nc;
 	String TAG = "LOGINACTIVITY";
 	EditText ln, lp;
+	SharedPreferences loginPrefs;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	protected void onStart() {
 		super.onStart();
 		// check if our user is in already
-		SharedPreferences loginPrefs = PreferenceManager
+		loginPrefs = PreferenceManager
 				.getDefaultSharedPreferences(LoginActivity.this);
 		String userloginid = loginPrefs.getString("uid", null);
 		if (userloginid != null) {
@@ -90,13 +93,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 						"Please Fill in Required Fields Then Try again",
 						Toast.LENGTH_LONG).show();
 
-			}
-			else
-			{
-				String[] pars = new String[]{logu, logpho};
+			} else {
+				String[] pars = new String[] { logu, logpho };
 				LogUserIn lui = new LogUserIn();
 				lui.execute(pars);
-				
+
 			}
 			break;
 		}
@@ -117,15 +118,14 @@ public class LoginActivity extends Activity implements OnClickListener {
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 				nameValuePairs
 						.add(new BasicNameValuePair("login_name", data[0]));
-				nameValuePairs
-						.add(new BasicNameValuePair("login_no", data[1]));
+				Log.d(TAG, "ln " + data[0]);
+				nameValuePairs.add(new BasicNameValuePair("login_no", data[1]));
+				Log.d(TAG, "lno " + data[1]);
 				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 				HttpResponse response = httpclient.execute(httppost);
 				ServerResp = EntityUtils.toString(response.getEntity());
 				Log.d(TAG, response.getStatusLine().toString());
-				Log.d(TAG, ServerResp);
-
 			} catch (Exception e) {
 				Log.d(TAG, e.toString());
 			}
@@ -135,7 +135,21 @@ public class LoginActivity extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			Log.d(TAG, ServerResp);
+			try {
+				JSONObject respo = new JSONObject(ServerResp);
+				String uid = respo.getJSONObject("user").getString(
+						"niwapi_u_id");
+				Editor edit = loginPrefs.edit();
+				edit.putString("uid", uid);
+				Log.d(TAG, uid + "Set as user Id");
+				edit.commit();
+				startActivity(new Intent(LoginActivity.this,
+						MainImageActivity.class));
+
+			} catch (Exception e) {
+				Log.d(TAG, e.toString());
+			}
+
 		}
 
 	}
