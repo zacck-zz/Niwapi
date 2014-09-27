@@ -329,6 +329,8 @@ int drawable logo 0x7f020077
 int drawable powered_by_google_dark 0x7f020078
 int drawable powered_by_google_light 0x7f020079
 int drawable repeat_bg 0x7f02007a
+int drawable trybutton 0x7f02007b
+int drawable votebutton 0x7f02007c
 int id AdHome 0x7f08004e
 int id action_bar 0x7f08002e
 int id action_bar_activity_content 0x7f080027
