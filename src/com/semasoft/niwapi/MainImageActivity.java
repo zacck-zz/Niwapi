@@ -11,14 +11,19 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.internal.ci;
+import com.google.android.gms.internal.li;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -27,6 +32,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainImageActivity extends Activity {
@@ -34,8 +40,10 @@ public class MainImageActivity extends Activity {
 	SharedPreferences MainPrefs;
 	String uid;
 	String TAG = "MAINIMAGEACTIVITY";
-
 	AdView mAd;
+	ContestAdapter mAdapter;
+	String Imp;
+	ListView lx;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +55,16 @@ public class MainImageActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		
+		Resources mResources = getResources();
+		Imp = mResources.getString(R.string.image_pre);
+		lx = (ListView)findViewById(R.id.lstContest);
 		MainPrefs = PreferenceManager
 				.getDefaultSharedPreferences(MainImageActivity.this);
 		uid = MainPrefs.getString("uid", null);
 		Log.d(TAG, uid);
+		pickContests pc = new pickContests();
+		pc.execute();
 		// init Ui and things
 		mAd = (AdView) findViewById(R.id.AdHome);
 		AdRequest maAdRequest = new AdRequest.Builder().build();
@@ -86,7 +100,10 @@ public class MainImageActivity extends Activity {
 	}
 
 	class pickContests extends AsyncTask<Void, Void, Void> {
+		
 		String ServerResp;
+		String[] ctitle, cimage, cid;
+		List<Contest> constestList = new ArrayList<Contest>();
 
 		@Override
 		protected Void doInBackground(Void... params) {
@@ -94,11 +111,26 @@ public class MainImageActivity extends Activity {
 			try {
 				HttpClient httpclient = new DefaultHttpClient();
 				HttpPost httppost = new HttpPost(
-						"collect_contests.php");
+						"http://appbase.co.ke/niwapi_rest/collect_contests.php");
 
 				HttpResponse response = httpclient.execute(httppost);
 				ServerResp = EntityUtils.toString(response.getEntity());
 				Log.d(TAG, response.getStatusLine().toString());
+				// lets parse the json
+				JSONObject parentObject = new JSONObject(ServerResp);
+				JSONArray parentArray = parentObject.getJSONArray("contests");
+				ctitle = new String[parentArray.length()];
+				cimage = new String[parentArray.length()];
+				cid = new String[parentArray.length()];
+
+				for (int now = 0; now < parentArray.length(); now++) {
+					JSONObject childObject = parentArray.getJSONObject(now)
+							.getJSONObject("contest");
+					ctitle[now] = childObject.getString("niwapi_contest_title");
+					cimage[now] = childObject.getString("niwapi_contest_image");
+					cid[now] = childObject.getString("niwapi_contest_id");
+				}
+				
 			} catch (Exception e) {
 				Log.d(TAG, e.toString());
 			}
@@ -108,6 +140,18 @@ public class MainImageActivity extends Activity {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
+			//lets draw on the list
+			for(int lilfuture = 0; lilfuture <cimage.length; lilfuture++)
+			{
+					Contest Cts = new Contest();
+					Cts.setID(cid[lilfuture]);
+					Cts.setTitle(ctitle[lilfuture]);
+					Cts.setImageLink(Imp+cimage[lilfuture]);
+					constestList.add(Cts);
+			}
+			mAdapter = new ContestAdapter(MainImageActivity.this, constestList);
+			lx.setAdapter(mAdapter);
+			
 		}
 
 	}
