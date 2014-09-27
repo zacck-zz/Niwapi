@@ -58,6 +58,8 @@ public class TryActivity extends ListActivity implements OnClickListener {
 
 		btPost = (ImageButton) findViewById(R.id.btTrialsTry);
 		btPost.setOnClickListener(this);
+		
+		etTrial = (EditText)findViewById(R.id.etTryContent);
 
 		getContestTrials gct = new getContestTrials();
 		gct.execute();
